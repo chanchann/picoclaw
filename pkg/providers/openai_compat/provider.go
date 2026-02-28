@@ -184,6 +184,9 @@ func (p *Provider) Chat(
 		req.Header.Set("Authorization", "Bearer "+p.apiKey)
 	}
 	for key, value := range p.customHeaders {
+		if k := http.CanonicalHeaderKey(key); k == "Authorization" || k == "Content-Type" {
+			continue
+		}
 		req.Header.Set(key, value)
 	}
 
@@ -301,7 +304,7 @@ func parseResponse(body []byte) (*LLMResponse, error) {
 type openaiMessage struct {
 	Role       string     `json:"role"`
 	Content    string     `json:"content"`
-	Reasoning  string     `json:"reasoning_content,omitempty"`
+	ReasoningContent string `json:"reasoning_content,omitempty"`
 	ToolCalls  []ToolCall `json:"tool_calls,omitempty"`
 	ToolCallID string     `json:"tool_call_id,omitempty"`
 }
@@ -315,7 +318,7 @@ func stripSystemParts(messages []Message) []openaiMessage {
 		out[i] = openaiMessage{
 			Role:       m.Role,
 			Content:    m.Content,
-			Reasoning:  m.ReasoningContent,
+			ReasoningContent: m.ReasoningContent,
 			ToolCalls:  m.ToolCalls,
 			ToolCallID: m.ToolCallID,
 		}
