@@ -41,7 +41,7 @@ func NewHTTPProviderWithOptions(
 ) *HTTPProvider {
 	opts := []openai_compat.Option{
 		openai_compat.WithMaxTokensField(maxTokensField),
-		openai_compat.WithRequestTimeout(time.Duration(requestTimeoutSeconds) * time.Second),
+		openai_compat.WithRequestTimeout(time.Duration(requestTimeoutSeconds)*time.Second),
 	}
 	if customHeaders != nil {
 		opts = append(opts, openai_compat.WithCustomHeaders(customHeaders))

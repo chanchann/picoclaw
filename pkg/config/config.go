@@ -461,9 +461,9 @@ type ModelConfig struct {
 	Model     string `json:"model"`      // Protocol/model-identifier (e.g., "openai/gpt-4o", "anthropic/claude-sonnet-4.6")
 
 	// HTTP-based providers
-	APIBase string            `json:"api_base,omitempty"` // API endpoint URL
-	APIKey  string            `json:"api_key"`            // API authentication key
-	Proxy   string            `json:"proxy,omitempty"`    // HTTP proxy URL
+	APIBase string `json:"api_base,omitempty"` // API endpoint URL
+	APIKey  string `json:"api_key"`            // API authentication key
+	Proxy   string `json:"proxy,omitempty"`    // HTTP proxy URL
 	Headers map[string]string `json:"headers,omitempty"`  // Custom HTTP headers
 
 	// Special providers (CLI-based, OAuth, etc.)
