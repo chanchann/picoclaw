@@ -5,8 +5,11 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"strings"
 	"testing"
 	"time"
+
+	"github.com/sipeed/picoclaw/pkg/providers/protocoltypes"
 )
 
 func TestProviderChat_UsesMaxCompletionTokensForGLM(t *testing.T) {

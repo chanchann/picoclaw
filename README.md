@@ -54,7 +54,7 @@
 
 ## 📢 News
 
-2026-02-16 🎉 PicoClaw hit 12K stars in one week! Thank you all for your support! PicoClaw is growing faster than we ever imagined. Given the high volume of PRs, we urgently need community maintainers. Our volunteer roles and roadmap are officially posted [here](docs/ROADMAP.md) —we can’t wait to have you on board!
+2026-02-16 🎉 PicoClaw hit 12K stars in one week! Thank you all for your support! PicoClaw is growing faster than we ever imagined. Given the high volume of PRs, we urgently need community maintainers. Our volunteer roles and roadmap are officially posted [here](ROADMAP.md) —we can’t wait to have you on board!
 
 2026-02-13 🎉 PicoClaw hit 5000 stars in 4days! Thank you for the community! There are so many PRs & issues coming in (during Chinese New Year holidays), we are finalizing the Project Roadmap and setting up the Developer Group to accelerate PicoClaw's development.  
 🚀 Call to Action: Please submit your feature requests in GitHub Discussions. We will review and prioritize them during our upcoming weekly meeting.
@@ -721,6 +721,20 @@ PicoClaw stores data in your configured workspace (default: `~/.picoclaw/workspa
 └── USER.md           # User preferences
 ```
 
+### Skill Sources
+
+By default, skills are loaded from:
+
+1. `~/.picoclaw/workspace/skills` (workspace)
+2. `~/.picoclaw/skills` (global)
+3. `<current-working-directory>/skills` (builtin)
+
+For advanced/test setups, you can override the builtin skills root with:
+
+```bash
+export PICOCLAW_BUILTIN_SKILLS=/path/to/skills
+```
+
 ### 🔒 Security Sandbox
 
 PicoClaw runs in a sandboxed environment by default. The agent can only access files and execute commands within the configured workspace.
@@ -897,7 +911,7 @@ The subagent has access to tools (message, web_search, etc.) and can communicate
 ### Providers
 
 > [!NOTE]
-> Groq provides free voice transcription via Whisper. If configured, Telegram voice messages will be automatically transcribed.
+> Groq provides free voice transcription via Whisper. If configured, audio messages from any channel will be automatically transcribed at the agent level.
 
 | Provider                   | Purpose                                 | Get API Key                                                          |
 | -------------------------- | --------------------------------------- | -------------------------------------------------------------------- |
